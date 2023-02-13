@@ -15,28 +15,19 @@ namespace Moravia.Homework
     {
         static void Main(string[] args)
         {
-            var sourceFileName = Path.Combine(Environment.CurrentDirectory, "..\\..\\..\\SourceFiles\\Document1.xml");
-            var targetFileName = Path.Combine(Environment.CurrentDirectory, "..\\..\\..\\TargetFiles\\Document1.json");
-            try
-            {
-                FileStream sourceStream = File.Open(sourceFileName, FileMode.Open);
-                var reader = new StreamReader(sourceStream);
-                string input = reader.ReadToEnd();
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
-            var xdoc = XDocument.Parse(input);
-            var doc = new Document
-            {
-                Title = xdoc.Root.Element("title").Value,
-                Text = xdoc.Root.Element("text").Value
-            };
-            var serializedDoc = JsonConvert.SerializeObject(doc);
-            var targetStream = File.Open(targetFileName, FileMode.Create, FileAccess.Write);
-            var sw = new StreamWriter(targetStream);
-            sw.Write(serializedDoc);
+            var sourceFileName = Path.Combine(Environment.CurrentDirectory, "..\\files\\source.json");
+            var targetFileName = Path.Combine(Environment.CurrentDirectory, "..\\files\\destination.json");
+
+            var jsonSerializer = new JsonSerializer();
+            var storage1 = new FileStorage(sourceFileName, jsonSerializer);
+            var storage2 = new FileStorage(targetFileName, jsonSerializer);
+            
+            var doc = storage1.Load<Document>();
+
+            doc.Title = "new title";
+            doc.Text = "Updated description.";
+
+            storage2.Save(doc); 
         }
     }
 }
