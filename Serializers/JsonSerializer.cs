@@ -1,8 +1,7 @@
 using Moravia.Homework.Exceptions;
-using Moravia.Homework.Interfaces;
 using Newtonsoft.Json;
 
-namespace Moravia.Homework;
+namespace Moravia.Homework.Serializers;
 
 class JsonSerializer : ISerializer
 {
@@ -11,11 +10,11 @@ class JsonSerializer : ISerializer
         try
         {
             return JsonConvert.DeserializeObject<T>(data)
-            ?? throw new SerializerException("Deserialize data is NULL.", null);
+            ?? throw new SerializerException("Deserialize data from JSON is NULL.", null);
         }
         catch (Exception ex)
         {
-            throw new SerializerException("Deserialize data failed.", ex);
+            throw new SerializerException("Deserialize from JSON failed.", ex);
         }
     }
 
@@ -27,7 +26,7 @@ class JsonSerializer : ISerializer
         }
         catch (Exception ex)
         {
-            throw new SerializerException("Serialize data failed.", ex);
+            throw new SerializerException("Serialize JSON failed.", ex);
         }
     }
 }

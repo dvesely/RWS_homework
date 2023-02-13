@@ -1,7 +1,7 @@
 using Moravia.Homework.Exceptions;
-using Moravia.Homework.Interfaces;
+using Moravia.Homework.Serializers;
 
-namespace Moravia.Homework;
+namespace Moravia.Homework.Storages;
 
 class FileStorage : IStorage
 {

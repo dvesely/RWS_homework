@@ -1,4 +1,4 @@
-namespace Moravia.Homework.Interfaces;
+namespace Moravia.Homework.Storages;
 
 interface IStorage
 {

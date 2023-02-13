@@ -2,7 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Xml.Linq;
-using Newtonsoft.Json;
+using System.Xml.Serialization;
+using Moravia.Homework.Serializers;
+using Moravia.Homework.Storages;
 
 namespace Moravia.Homework
 {
@@ -15,12 +17,13 @@ namespace Moravia.Homework
     {
         static void Main(string[] args)
         {
-            var sourceFileName = Path.Combine(Environment.CurrentDirectory, "..\\files\\source.json");
-            var targetFileName = Path.Combine(Environment.CurrentDirectory, "..\\files\\destination.json");
+            var sourceFileName = Path.Combine(Environment.CurrentDirectory, "..\\files\\source.xml");
+            var targetFileName = Path.Combine(Environment.CurrentDirectory, "..\\files\\destination.xml");
 
             var jsonSerializer = new JsonSerializer();
-            var storage1 = new FileStorage(sourceFileName, jsonSerializer);
-            var storage2 = new FileStorage(targetFileName, jsonSerializer);
+            var xmlSerializer = new Serializers.XmlSerializer();
+            var storage1 = new FileStorage(sourceFileName, xmlSerializer);
+            var storage2 = new FileStorage(targetFileName, xmlSerializer);
             
             var doc = storage1.Load<Document>();
 

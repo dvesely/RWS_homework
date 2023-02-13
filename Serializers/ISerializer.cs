@@ -1,4 +1,4 @@
-namespace Moravia.Homework.Interfaces;
+namespace Moravia.Homework.Serializers;
 
 interface ISerializer
 {
