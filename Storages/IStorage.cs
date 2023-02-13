@@ -1,6 +1,6 @@
 namespace Moravia.Homework.Storages;
 
-interface IStorage
+public interface IStorage
 {
     T Load<T>() where T : class, new();
 

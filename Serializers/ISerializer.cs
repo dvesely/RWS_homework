@@ -1,6 +1,6 @@
 namespace Moravia.Homework.Serializers;
 
-interface ISerializer
+public interface ISerializer
 {
     string Serialize<T>(T obj) where T : class;
 

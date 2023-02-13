@@ -2,7 +2,7 @@ using Moravia.Homework.Exceptions;
 
 namespace Moravia.Homework.Serializers;
 
-class XmlSerializer : ISerializer
+public class XmlSerializer : ISerializer
 {
     public T Deserialize<T>(string data) where T : class, new()
     {

@@ -3,7 +3,7 @@ using Moravia.Homework.Serializers;
 
 namespace Moravia.Homework.Storages;
 
-class FileStorage : IStorage
+public class FileStorage : IStorage
 {
     private readonly string filename;
     private readonly ISerializer serializer;
