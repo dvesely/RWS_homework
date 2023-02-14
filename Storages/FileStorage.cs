@@ -8,6 +8,8 @@ public class FileStorage : IStorage
     private readonly string filename;
     private readonly ISerializer serializer;
 
+    public ISerializer Serializer => serializer;
+
     public FileStorage(string filename, ISerializer serializer)
     {
         this.filename = filename;
